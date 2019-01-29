@@ -33,6 +33,22 @@ public class Matriz {
     public Dimension getDimension(){
         return new Dimension(datos.length, datos[0].length);
     }
+
+public static Matriz inversaMatriz(Matriz a){
+        
+        int filas = a.getDimension().height;
+        int columnas = a.getDimension().width;
+        
+        Matriz matrizInversa = new Matriz(columnas, filas, false);
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                matrizInversa.datos[j][i] = a.datos[i][j];
+            }
+        }
+        
+        return matrizInversa;
+    }
         
     public static Matriz sumarDosMatrices(Matriz a, Matriz b) throws DimensionesIncompatibles { 
         if(! a.getDimension().equals(b.getDimension())) throw new DimensionesIncompatibles("La suma de matrices requiere matrices de las mismas dimensiones");        
